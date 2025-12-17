@@ -12,7 +12,7 @@ const AdminProductList = ({products,setEditProduct,handleDelete}) => {
           name={product.name}
           image={product.image_url}
           description={product.description}
-          price={product.sellingPrice}
+          price={product.selling_price}
 
           setEditProduct={setEditProduct}
           handleDelete={handleDelete}
