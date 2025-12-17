@@ -102,6 +102,8 @@
 
 import React, { useEffect, useState } from "react";
 import OrderStepper from "./OrderStepper";
+const API = import.meta.env.VITE_BACKEND_URL;
+
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState([]);
@@ -112,7 +114,7 @@ const OrdersPage = () => {
       try {
         const token = sessionStorage.getItem("token");
 
-        const res = await fetch("http://localhost:3000/orders", {
+        const res = await fetch(`${API}/orders`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
+const API = import.meta.env.VITE_BACKEND_URL;
+
 
 const SignInForm = () => {
 
@@ -25,7 +27,7 @@ const SignInForm = () => {
         e.preventDefault();
 
         try{
-                const {data} = await axios.post('http://localhost:3000/auth/register',
+                const {data} = await axios.post(`${API}/auth/register`,
                 {
                     name: username,
                     email:email , 

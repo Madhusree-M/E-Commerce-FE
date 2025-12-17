@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+const API = import.meta.env.VITE_BACKEND_URL;
 
 const Cart = () => {
     
@@ -11,7 +12,7 @@ const Cart = () => {
 
       useEffect(() => {
         const fetchCart = async () => {
-        const res = await fetch("http://localhost:3000/cart", {
+        const res = await fetch(`${API}/cart`, {
             headers: {
             "Authorization": `Bearer ${sessionStorage.getItem("token")}`
             }
@@ -70,7 +71,7 @@ const Cart = () => {
             const productId = cartProducts[index].product._id;
 
             const res = await fetch(
-            `http://localhost:3000/cart/${productId}`,
+            `${API}/cart/${productId}`,
             {
                 method: "DELETE",
                 headers: {

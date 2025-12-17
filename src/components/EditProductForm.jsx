@@ -98,6 +98,8 @@
 
 
 import { useState } from "react";
+const API = import.meta.env.VITE_BACKEND_URL;
+
 
 const EditProductForm = ({ editProduct, setEditProduct, setProducts }) => {
 
@@ -123,7 +125,7 @@ const EditProductForm = ({ editProduct, setEditProduct, setProducts }) => {
     };
 
     const res = await fetch(
-      `http://localhost:3000/products/${editProduct.id}`,
+      `${API}/products/${editProduct.id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

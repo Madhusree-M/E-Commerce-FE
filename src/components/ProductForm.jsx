@@ -1,4 +1,6 @@
 import { useState } from "react"
+const API = import.meta.env.VITE_BACKEND_URL;
+
 
 const ProductForm = ({setProducts}) => {
     
@@ -24,7 +26,7 @@ const ProductForm = ({setProducts}) => {
             ratings: Number(ratings),
         };
 
-        const response = await fetch("http://localhost:3000/products", {
+        const response = await fetch(`${API}/products`, {
             method: "POST",
             headers: { "Content-Type": "application/json; charset=UTF-8" },
             body: JSON.stringify(newProd)

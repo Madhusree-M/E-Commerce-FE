@@ -1,42 +1,17 @@
-// import ProductForm from "./ProductForm";
-
-// const AdminPage = () => {
-//     return (
-//         <>
-//             <ProductForm/>
-//         </>
-//     )
-// }
-// export default AdminPage;
-
-
-
-
-
 import { useEffect, useState } from "react";
-// import AdminProductList from "./AdminProductList";
 import ProductForm from "./ProductForm";
 import EditProductForm from "./EditProductForm";
 import AdminProductList from "./AdminProductList";
+const API = import.meta.env.VITE_BACKEND_URL;
 
 const AdminPage = () => {
-
-    // const navigate = useNavigate();
 
     const [products, setProducts] = useState([]);
     const [editProduct, setEditProduct] = useState(null);
 
-  // useEffect(() => {
-  //     const fetchProducts = async () => {
-  //     const res = await fetch("http://localhost:3000/products");
-  //     const data = await res.json();
-  //     setProducts(data);
-  //     };
-  //     fetchProducts();
-  // }, []);
 
   const fetchProducts = async () => {
-    const res = await fetch("http://localhost:3000/products");
+    const res = await fetch(`${API}/products`);
     const data = await res.json();
     setProducts(data);
   };
@@ -50,7 +25,7 @@ const AdminPage = () => {
         const ok = confirm("Are you sure you want to delete?");
         if (!ok) return;
 
-        await fetch(`http://localhost:3000/products/${id}`, {
+        await fetch(`${API}/products/${id}`, {
             method: "DELETE"
         });
 

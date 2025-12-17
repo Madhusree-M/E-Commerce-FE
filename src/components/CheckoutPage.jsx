@@ -1,4 +1,6 @@
 import { useLocation, useNavigate } from "react-router";
+const API = import.meta.env.VITE_BACKEND_URL;
+
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -32,7 +34,7 @@ const Checkout = () => {
       }
     };
 
-    const res = await fetch("http://localhost:3000/orders", {
+    const res = await fetch(`${API}/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

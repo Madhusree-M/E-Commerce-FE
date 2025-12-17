@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router";
+const API = import.meta.env.VITE_BACKEND_URL;
+
 
 const ProductCard = ({ id, name, description, image, price}) => {
 
@@ -8,7 +10,7 @@ const ProductCard = ({ id, name, description, image, price}) => {
     e.preventDefault();
     try {
         console.log("Id---------",id)
-        const response = await fetch("http://localhost:3000/cart", {
+        const response = await fetch(`${API}/cart`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

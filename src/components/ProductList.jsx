@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+const API = import.meta.env.VITE_BACKEND_URL;
+
 
 const ProductList = () =>
 {
@@ -7,7 +9,7 @@ const ProductList = () =>
 
   useEffect(() => {
       const fetchData = async () => {
-        const res = await fetch("http://localhost:3000/products");
+        const res = await fetch(`${API}/products`);
         
         const data = await res.json();
         setProducts(data);
