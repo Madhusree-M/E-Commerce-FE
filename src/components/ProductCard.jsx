@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import Reveal from "./Reveal";
 const API = import.meta.env.VITE_BACKEND_URL;
 
 
@@ -37,6 +38,7 @@ const ProductCard = ({ id, name, description, image, price}) => {
     }
 };
     return (
+        <Reveal>
         <div className="rounded-4xl bg-white/45 border-2 border-yellow-800
                             hover:scale-103 duration-300
                             hover:shadow-md min-h-117">
@@ -50,6 +52,7 @@ const ProductCard = ({ id, name, description, image, price}) => {
                  <button onClick={addToCart} className="px-3 py-2 bg-rose-500 text-white rounded-full text-sm">Add to Cart</button>
             </div>
         </div>
+        </Reveal>
     )
 }
 

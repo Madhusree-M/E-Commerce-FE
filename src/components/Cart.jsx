@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import Reveal from "./Reveal";
 const API = import.meta.env.VITE_BACKEND_URL;
 
 const Cart = () => {
@@ -97,7 +98,7 @@ const Cart = () => {
         // EMPTY CART VIEW
 if (cartProducts.length === 0) {
   return (
-    <>
+    <Reveal>
       <h3 className="text-3xl text-yellow-900 text-center m-5 font-bold">
         Your Cart
       </h3>
@@ -115,7 +116,7 @@ if (cartProducts.length === 0) {
           Continue Shopping
         </button>
       </div>
-    </>
+    </Reveal>
   );
 }
 

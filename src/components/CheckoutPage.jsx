@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router";
+import Reveal from "./Reveal";
 const API = import.meta.env.VITE_BACKEND_URL;
 
 
@@ -51,6 +52,7 @@ const Checkout = () => {
   };
 
   return (
+    <Reveal>
     <form
       onSubmit={handleSubmit}
       className="flex flex-col rounded-lg bg-yellow-800/20 
@@ -95,6 +97,7 @@ const Checkout = () => {
         Place Order (₹{totalAmount})
       </button>
     </form>
+    </Reveal>
   );
 };
 

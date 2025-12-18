@@ -1,4 +1,5 @@
 import Hero from "./components/Hero";
+import HomePage from "./components/HomePage";
 import QuickLinks from "./components/QuickLinks";
 
 const App = () => {
