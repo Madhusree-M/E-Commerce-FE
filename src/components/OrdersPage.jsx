@@ -43,7 +43,7 @@ const OrdersPage = () => {
   }
 
   return (
-    <Reveal>
+    <>
       <h3 className="text-3xl text-yellow-900 text-center m-5 font-bold">
         Your Orders
       </h3>
@@ -52,6 +52,7 @@ const OrdersPage = () => {
       <div className="flex flex-col gap-5 px-5 mb-10 justify-center">
         {orders.map(order =>
           order.items.map((prod, index) => (
+            <Reveal>
             <div
               key={`${order._id}-${index}`}
               className="bg-yellow-800/20 flex gap-5 p-5 items-center rounded-md shadow"
@@ -111,10 +112,11 @@ const OrdersPage = () => {
                 </div>
               </div>
             </div>
+            </Reveal>
           ))
         )}
       </div>
-    </Reveal>
+    </>
   );
 };
 
