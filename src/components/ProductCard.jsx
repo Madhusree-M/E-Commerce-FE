@@ -19,6 +19,7 @@ const ProductCard = ({ id, name, description, image, price}) => {
         return;
     }
 
+    
         try {
             const response = await fetch(`${API}/cart`, {
                 method: "POST",
@@ -46,6 +47,42 @@ const ProductCard = ({ id, name, description, image, price}) => {
             alert("Failed to add to cart. Please try again.");
         }
     };
+
+
+    const addToWishlist = async (e) => {
+  e.preventDefault();
+
+  const token = sessionStorage.getItem("token");
+
+  if (!token) {
+    navigate("/login", {
+      state: { from: "product" }
+    });
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API}/wishlist/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ productId: id }),
+    });
+
+    if (!res.ok) {
+      const error = await res.json();
+      alert(error.message || "Already in wishlist");
+      return;
+    }
+
+    alert("Added to wishlist ❤️");
+  } catch (error) {
+    console.error("Wishlist error:", error);
+  }
+};
+
     return (
         <Reveal>
         <div className="rounded-4xl bg-white/45 border-2 border-yellow-800
@@ -53,7 +90,19 @@ const ProductCard = ({ id, name, description, image, price}) => {
                             hover:shadow-md min-h-117">
 
 
-            <img src={image} className="mx-auto object-cover h-80 w-80 rounded-t-4xl"/>
+            <div className="relative">
+                <img
+                    src={image}
+                    className="mx-auto object-cover h-80 w-80 rounded-t-4xl"/>
+
+                <button
+                    onClick={addToWishlist}
+                    className="absolute top-3 right-3 bg-white/40 
+                            px-2 py-1 rounded-full shadow 
+                            hover:bg-rose-100 transition">
+                    ❤️
+                </button>
+            </div>
             <h2 className="mx-4 mt-4 text-amber-950 text-2xl">{name}</h2>
             <p className="mx-4 text-sm text-amber-950/70">{description}</p>
             <div className="mx-4 flex justify-between items-center mt-5">

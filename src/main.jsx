@@ -15,6 +15,7 @@ import { useEffect } from 'react'
 import EditProductForm from './components/EditProductForm.jsx'
 import SignInForm from './components/SignInForm.jsx'
 import Checkout from './components/CheckoutPage.jsx'
+import WishlistPage from './components/WishlistPage.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -36,6 +37,12 @@ createRoot(document.getElementById('root')).render(
                 <Route path='/orders' element={
                     <ProtectedRoute>
                         <OrdersPage/>
+                    </ProtectedRoute>
+                }/>
+
+                <Route path='/wishlist' element={
+                    <ProtectedRoute>
+                        <WishlistPage/>
                     </ProtectedRoute>
                 }/>
 

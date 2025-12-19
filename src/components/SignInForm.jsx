@@ -54,7 +54,7 @@ const SignInForm = () => {
 
                     <input type="text" 
                             placeholder="Enter Name" 
-                            value = {username}s
+                            value = {username}
                             onChange={handleNameChange}
                             className="p-3 border-1 border-yellow-800/50 rounded-lg text-lg">
                     </input>
