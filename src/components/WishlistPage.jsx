@@ -28,7 +28,8 @@ const WishlistPage = () => {
 
         const data = await res.json();
         console.log("data====>>>>>",data)
-        setWishlist(data.items || []);
+        setWishlist(data.wishlist.items || []);
+        console.log("dataitems=====>",data.wishlist.items)
       } catch (error) {
         console.error("Wishlist fetch error:", error);
       } finally {
@@ -106,26 +107,23 @@ const WishlistPage = () => {
 
   return (
     <>
-      <h3 className="text-3xl text-amber-950 text-center m-5 font-bold">
-        My Wishlist
+      <h3 className="text-3xl text-yellow-900 text-center m-5 font-bold">
+        Wishlist
       </h3>
 
-      <span className="mx-auto block m-5 w-[30%] h-1 bg-amber-800/90 rounded-full"></span>
+      <span className="mx-auto block m-5 w-[30%] h-1 bg-yellow-800/90 rounded-full"></span>
 
       <div className="flex flex-col gap-6 px-5 mb-10">
         {wishlist.map((item) => (
           <Reveal key={item.product._id}>
-            <div
-              className="bg-amber-50 border border-yellow-800/30 
-                         flex gap-5 p-6 items-center rounded-3xl 
-                         shadow-sm hover:shadow-md transition"
-            >
+            <div className="bg-yellow-800/30 flex w-[80%] mx-auto gap-5 items-center 
+             p-5 rounded-md">
               {/* Product Image */}
-              <div className="h-40 w-40">
+              <div className="h-40 w-40 flex">
                 <img
-                  src={item.product.image}
+                  src={item.product.image_url}
                   alt={item.product.name}
-                  className="w-full h-full object-cover rounded-2xl 
+                  className="w-full h-full object-cover rounded-md 
                              border border-yellow-800/20"
                 />
               </div>
@@ -133,16 +131,16 @@ const WishlistPage = () => {
               {/* Product Info */}
               <div className="flex justify-between w-full">
                 <div className="flex flex-col gap-3 w-3/5 my-auto mx-6">
-                  <h3 className="text-2xl font-bold text-amber-950">
+                  <h3 className="text-2xl font-bold text-yellow-900">
                     {item.product.name}
                   </h3>
 
-                  <p className="text-sm text-amber-900/70">
+                  <p className="text-sm text-yellow-800/80">
                     {item.product.description}
                   </p>
 
-                  <h4 className="text-2xl font-bold text-rose-600">
-                    ₹{item.product.price}
+                  <h4 className="text-2xl font-bold text-yellow-950">
+                    ₹{item.product.selling_price}
                   </h4>
                 </div>
 
@@ -150,17 +148,21 @@ const WishlistPage = () => {
                 <div className="flex flex-col gap-3 items-end pr-5">
                   <button
                     onClick={() => moveToCart(item.product._id)}
-                    className="px-6 py-2 bg-amber-900 text-white 
-                               rounded-full hover:bg-amber-800 transition"
+                    className="px-3 py-2 bg-yellow-800/90 text-white  rounded-sm text-center text-white/70"
                   >
-                    Move to Cart
+                   <svg class="w-8 h-8 text-white/90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                  </svg>
+
                   </button>
 
-                  <button
-                    onClick={() => removeFromWishlist(item.product._id)}
-                    className="text-sm text-rose-600 hover:underline"
-                  >
-                    Remove
+                  <button 
+                      onClick={() => removeFromWishlist(index)}
+                      className="px-3 py-2 bg-yellow-800/90 text-white  rounded-sm text-center text-white/70">
+                      <svg className="w-8 h-8 text-white/90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                      </svg>
+
                   </button>
                 </div>
               </div>
