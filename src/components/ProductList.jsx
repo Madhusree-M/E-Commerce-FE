@@ -6,6 +6,8 @@ const API = import.meta.env.VITE_BACKEND_URL;
 const ProductList = () =>
 {
   const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
       const fetchData = async () => {
@@ -13,10 +15,14 @@ const ProductList = () =>
         
         const data = await res.json();
         setProducts(data);
+        setLoading(false);
       };
       fetchData();
     },[]);
 
+    if (loading) {
+    return <p className="text-center mt-10">Loading orders...</p>;
+  }
 
     return (
         <div className="mt-10 p-5 flex flex-wrap gap-5 justify-center">

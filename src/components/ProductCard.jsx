@@ -8,35 +8,44 @@ const ProductCard = ({ id, name, description, image, price}) => {
     const navigate = useNavigate()
 
     const addToCart = async (e) => {
-    e.preventDefault();
-    try {
-        console.log("Id---------",id)
-        const response = await fetch(`${API}/cart`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${sessionStorage.getItem('token')}`
-            },
-            body: JSON.stringify({
-                
-                productId: id,
-                quantity: 1
-            })
+        e.preventDefault();
+
+        const token = sessionStorage.getItem("token");
+        
+        if (!token) {
+        navigate("/login", {
+        state: { from: "product" }
         });
-
-        if (!response.ok) {
-            const error = await response.json();
-            console.error("Cart error:", error);
-            alert(`Error: ${error.message || 'Failed to add to cart'}`);
-            return;
-        }
-
-        navigate("/cart");
-    } catch (error) {
-        console.error("Network error:", error);
-        alert("Failed to add to cart. Please try again.");
+        return;
     }
-};
+
+        try {
+            const response = await fetch(`${API}/cart`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${sessionStorage.getItem('token')}`
+                },
+                body: JSON.stringify({
+                    
+                    productId: id,
+                    quantity: 1
+                })
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                console.error("Cart error:", error);
+                alert(`Error: ${error.message || 'Failed to add to cart'}`);
+                return;
+            }
+
+            navigate("/cart");
+        } catch (error) {
+            console.error("Network error:", error);
+            alert("Failed to add to cart. Please try again.");
+        }
+    };
     return (
         <Reveal>
         <div className="rounded-4xl bg-white/45 border-2 border-yellow-800
