@@ -21,7 +21,7 @@ const ProductList = () =>
     },[]);
 
     if (loading) {
-    return <p className="text-center mt-10">Loading orders...</p>;
+    return <p className="text-center mt-10">Loading products...</p>;
   }
 
     return (

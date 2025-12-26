@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router";
 import Reveal from "./Reveal";
 const API = import.meta.env.VITE_BACKEND_URL;
+import { toast } from "react-toastify";
+
 
 
 const ProductCard = ({ id, name, description, image, price}) => {
@@ -41,7 +43,7 @@ const ProductCard = ({ id, name, description, image, price}) => {
                 return;
             }
 
-            navigate("/cart");
+            toast.success("Product added to cart")
         } catch (error) {
             console.error("Network error:", error);
             alert("Failed to add to cart. Please try again.");
