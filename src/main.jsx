@@ -16,6 +16,8 @@ import EditProductForm from './components/EditProductForm.jsx'
 import SignInForm from './components/SignInForm.jsx'
 import Checkout from './components/CheckoutPage.jsx'
 import WishlistPage from './components/WishlistPage.jsx'
+import Profile from './components/Profile.jsx'
+import AuthPage from './components/AuthPage.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -51,6 +53,12 @@ createRoot(document.getElementById('root')).render(
                     <Checkout />
                     </ProtectedRoute>
                     } />
+
+                <Route path='/profile' element={
+                    <ProtectedRoute>
+                        <Profile/>
+                    </ProtectedRoute>
+                }/>
                 
             </Route>
             <Route path='/admin' element={
@@ -68,8 +76,8 @@ createRoot(document.getElementById('root')).render(
                     <Cart/>
             } />
 
-            <Route path='/login' element={<LoginForm/>}/>
-            <Route path='/signin' element={<SignInForm/>}/>
+            <Route path='/login' element={<AuthPage/>}/>
+            <Route path='/signin' element={<AuthPage/>}/>
         </Routes>
     </BrowserRouter>
     </>

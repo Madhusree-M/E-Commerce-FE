@@ -29,8 +29,8 @@ const App = () => {
   ]
   return (
     <div className="">
-      <QuickLinks></QuickLinks>
-      <Hero heroProducts={heroProducts}/>
+      {/* <QuickLinks></QuickLinks> */}
+      <HomePage/>
     </div>
 );
 }

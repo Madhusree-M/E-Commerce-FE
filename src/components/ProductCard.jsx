@@ -39,14 +39,14 @@ const ProductCard = ({ id, name, description, image, price}) => {
             if (!response.ok) {
                 const error = await response.json();
                 console.error("Cart error:", error);
-                alert(`Error: ${error.message || 'Failed to add to cart'}`);
+                toast.error(`Error: ${error.message || 'Failed to add to cart'}`);
                 return;
             }
 
             toast.success("Product added to cart")
         } catch (error) {
             console.error("Network error:", error);
-            alert("Failed to add to cart. Please try again.");
+            toast.error("Failed to add to cart. Please try again.");
         }
     };
 
@@ -75,11 +75,11 @@ const ProductCard = ({ id, name, description, image, price}) => {
 
     if (!res.ok) {
       const error = await res.json();
-      alert(error.message || "Already in wishlist");
+       toast(error.message || "Already in wishlist");
       return;
     }
 
-    alert("Added to wishlist ❤️");
+     toast.success("Added to wishlist ❤️");
   } catch (error) {
     console.error("Wishlist error:", error);
   }
