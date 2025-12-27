@@ -107,6 +107,7 @@ const AuthPage = () => {
               value={loginEmail}
               onChange={(e) => setLoginEmail(e.target.value)}
               className="p-3 border rounded-lg"
+              required
             />
             <input
               type="password"
@@ -114,6 +115,7 @@ const AuthPage = () => {
               value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}
               className="p-3 border rounded-lg"
+              required
             />
 
             <button
@@ -149,6 +151,7 @@ const AuthPage = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="p-3 border rounded-lg"
+              required
             />
             <input
               type="email"
@@ -156,6 +159,7 @@ const AuthPage = () => {
               value={signupEmail}
               onChange={(e) => setSignupEmail(e.target.value)}
               className="p-3 border rounded-lg"
+              required
             />
             <input
               type="password"
@@ -163,6 +167,7 @@ const AuthPage = () => {
               value={signupPassword}
               onChange={(e) => setSignupPassword(e.target.value)}
               className="p-3 border rounded-lg"
+              required
             />
 
             <button
